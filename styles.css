@@ -1,0 +1,106 @@
+/* SD Systems — minimal Electron-style static site */
+:root {
+  --bg: #0B0F14;
+  --panel: rgba(255, 255, 255, 0.04);
+  --panel-strong: rgba(255, 255, 255, 0.08);
+  --text: #E5E7EB;
+  --muted: #9CA3AF;
+  --border: rgba(255, 255, 255, 0.10);
+  --accent: #6EE7F9;
+  --accent2: #A78BFA;
+  --accent3: #F59E0B;
+  --shadow: 0 10px 30px rgba(0,0,0,0.45);
+}
+
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(1200px 800px at 10% -10%, rgba(110,231,249,0.10), transparent 60%),
+              radial-gradient(1000px 600px at 90% 10%, rgba(167,139,250,0.08), transparent 60%),
+              var(--bg);
+  color: var(--text);
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji", sans-serif;
+  line-height: 1.6;
+}
+
+.container { width: min(1100px, 92vw); margin: 0 auto; }
+
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  backdrop-filter: saturate(140%) blur(16px);
+  background: linear-gradient(180deg, rgba(11,15,20,0.85), rgba(11,15,20,0.35));
+  border-bottom: 1px solid var(--border);
+}
+.header-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 0;
+}
+.brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); }
+.logo { width: 28px; height: 28px; filter: drop-shadow(0 4px 10px rgba(110,231,249,0.25)); }
+.brand-text { font-weight: 700; letter-spacing: 0.2px; }
+
+.nav a {
+  color: var(--muted);
+  margin-left: 18px;
+  text-decoration: none;
+  padding: 8px 12px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  transition: 150ms ease;
+  font-weight: 500;
+}
+.nav a:hover, .nav a.active {
+  color: var(--text);
+  border-color: var(--border);
+  background: var(--panel);
+}
+
+.hero { padding: 58px 0 26px; }
+.hero h1 {
+  font-size: clamp(32px, 4.5vw, 54px);
+  line-height: 1.1;
+  margin: 0 0 10px 0;
+  letter-spacing: -0.02em;
+  background: linear-gradient(90deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.hero p { color: var(--muted); font-size: clamp(16px, 2.2vw, 18px); max-width: 70ch; }
+
+.kbd { font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px;
+  padding: 3px 8px; border-radius: 10px; border: 1px solid var(--border); background: var(--panel); color: var(--text); }
+
+.grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+.card {
+  background: linear-gradient(180deg, var(--panel), transparent),
+              radial-gradient(600px 200px at 0% -40%, rgba(110,231,249,0.10), transparent 60%),
+              radial-gradient(600px 200px at 100% -40%, rgba(167,139,250,0.10), transparent 60%);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: var(--shadow);
+  transition: transform 160ms ease, border-color 160ms ease;
+}
+.card:hover { transform: translateY(-2px); border-color: var(--accent); }
+
+.section { margin: 28px 0 40px; }
+.section h2 { margin: 0 0 8px 0; font-size: 22px; letter-spacing: 0.1px; }
+.section p.lead { color: var(--muted); margin-top: 0; }
+
+.badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.badge { font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px; padding: 6px 10px; border-radius: 999px; border: 1px solid var(--border); background: var(--panel); }
+
+.table { width: 100%; border-collapse: collapse; overflow: hidden; border-radius: 14px; border: 1px solid var(--border); }
+.table th, .table td { padding: 12px 14px; border-bottom: 1px solid var(--border); text-align: left; }
+.table th { color: var(--muted); font-weight: 600; }
+.table tr:last-child td { border-bottom: none; }
+
+.cta { display: inline-flex; align-items: center; gap: 10px; padding: 12px 16px; border-radius: 14px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2)); color: #0B0F14; font-weight: 700; text-decoration: none; box-shadow: var(--shadow); }
+.cta:hover { filter: brightness(1.05); }
+
+.site-footer { border-top: 1px solid var(--border); margin-top: 40px; }
+.footer-inner { display: flex; align-items: center; justify-content: space-between; padding: 16px 0 38px; }
+.footer-links a { color: var(--muted); text-decoration: none; margin-left: 14px; }
+.footer-links a:hover { color: var(--text); }
